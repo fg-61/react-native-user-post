@@ -1,10 +1,26 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import UserList from '../../components/UserList';
+import baseManager from '../../api/baseManager';
 
-const UserListScreen = () => {
+const UserListScreen = ( {navigation} ) => {
+
+  const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    getUsers();
+  }, []);
+  
+  const getUsers = () => {
+    baseManager.getAll('/users')
+      .then((data) => {
+        setUsers(data);
+      })
+  };
+
   return (
-    <View>
-      <Text>UserListScreen</Text>
+    <View style={ { flex: 1 } }>
+      <UserList users={users} navigation={navigation}></UserList>
     </View>
   )
 }
