@@ -6,16 +6,16 @@ const UserList = (props) => {
     const navigation = props.navigation;
     const users = props.users;
 
-    const Item = ({ name }) => (
+    const Item = ({ user }) => (
         <View style={styles.item}>
-            <TouchableOpacity onPress={() => navigation.navigate("posts")}>
-                <Text style={styles.name}>{name}</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("UserDetail", { userDetails: user})}>
+                <Text style={styles.name}>{user.name}</Text>
             </TouchableOpacity>
         </View>
     );
 
     const renderUser = ({ item }) => (
-        <Item name={item.name} />
+        <Item user={item} />
     );
     
     return (
