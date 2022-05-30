@@ -10,7 +10,7 @@ const Router = () => {
     return (
         <SafeAreaView style={{ flex:1 }}>
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen
                         name="HomeTabs"
                         component={BottomTab}
