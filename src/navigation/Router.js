@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomTab from './BottomTab';
 import UserDetailScreen from '../screens/UserScreen/UserDetailScreen';
+import PostDetailScreen from '../screens/PostScreen/PostDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,10 @@ const Router = () => {
                     <Stack.Screen
                         name="UserDetail"
                         component={UserDetailScreen}
+                    />
+                    <Stack.Screen
+                        name="PostDetail"
+                        component={PostDetailScreen}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

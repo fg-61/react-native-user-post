@@ -1,10 +1,26 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import baseManager from '../../api/baseManager';
+import PostList from '../../components/PostList';
 
-const PostListScreen = () => {
+const PostListScreen = ( {navigation} ) => {
+
+  const [posts, setPosts] = useState([]);
+  
+  useEffect(() => {
+    getPosts();
+  }, []);
+  
+  const getPosts = () => {
+    baseManager.getAll('/posts')
+      .then((data) => {
+        setPosts(data);
+      })
+  };
+
   return (
-    <View>
-      <Text>PostListScreen</Text>
+    <View style={ { flex: 1 } }>
+      <PostList posts={posts} navigation={navigation}></PostList>
     </View>
   )
 }
