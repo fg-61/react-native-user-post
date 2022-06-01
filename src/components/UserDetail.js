@@ -14,34 +14,25 @@ const UserDetail = (props) => {
     return (
         <>
             <ScrollView>
-                <Appbar.Header style={{ backgroundColor: '#f1c40f' }}>
+                <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => onPressGoBack()} />
                     <Appbar.Content title={user.username} subtitle={user.name} />
                 </Appbar.Header>
-                <View>
-                    <Card>
-                        <Card.Content>
+                <Card>
+                    <Card.Content>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Username</Paragraph>
                             <Title>{user.username}</Title>
-                        </Card.Content>
-                    </Card>
-
-                    <Card>
-                        <Card.Content>
+                        </View>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Name</Paragraph>
                             <Title>{user.name}</Title>
-                        </Card.Content>
-                    </Card>
-
-                    <Card>
-                        <Card.Content>
+                        </View>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Email</Paragraph>
                             <Title>{user.email}</Title>
-                        </Card.Content>
-                    </Card>
-
-                    <Card>
-                        <Card.Content>
+                        </View>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Address</Paragraph>
 
                             <Paragraph>City</Paragraph>
@@ -72,25 +63,16 @@ const UserDetail = (props) => {
 
                             </View>
 
-                        </Card.Content>
-                    </Card>
-
-                    <Card>
-                        <Card.Content>
+                        </View>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Phone</Paragraph>
                             <Title>{user.phone}</Title>
-                        </Card.Content>
-                    </Card>
-
-                    <Card>
-                        <Card.Content>
+                        </View>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Website</Paragraph>
                             <Title>{user.website}</Title>
-                        </Card.Content>
-                    </Card>
-                    
-                    <Card>
-                        <Card.Content>
+                        </View>
+                        <View style={styles.item}>
                             <Paragraph style={styles.title}>Company</Paragraph>
 
                             <Paragraph>Company Name</Paragraph>
@@ -101,9 +83,9 @@ const UserDetail = (props) => {
 
                             <Paragraph>Broadcasting</Paragraph>
                             <Title>{user.company && user.company.bs}</Title>
-                        </Card.Content>
-                    </Card>
-                </View>
+                        </View>
+                    </Card.Content>
+                </Card>
             </ScrollView>
 
         </>
@@ -118,5 +100,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         margin: 5,
         marginBottom: 10
+    },
+    item: {
+        paddingBottom: 24
+    },
+    header: {
+        backgroundColor: '#f1c40f'
     }
 })

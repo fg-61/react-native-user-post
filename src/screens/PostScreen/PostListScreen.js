@@ -19,7 +19,7 @@ const PostListScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, marginTop: 20 } }>
       <PostList posts={posts} navigation={navigation}></PostList>
     </View>
   )

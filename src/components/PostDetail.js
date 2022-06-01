@@ -14,12 +14,12 @@ const PostDetail = (props) => {
     return (
         <>
             <ScrollView>
-                <Appbar.Header style={{ backgroundColor: '#f1c40f' }}>
+                <Appbar.Header style={styles.header}>
                     <Appbar.BackAction onPress={() => onPressGoBack() }/>
                     <Appbar.Content title={post.title} />
                 </Appbar.Header>
                 <Card>
-                    <Card.Content style={{ alignItems: 'center' }}>
+                    <Card.Content style={styles.content}>
                         <Title>{post.title}</Title>
                         <Title style={styles.body}>{post.body}</Title>
                     </Card.Content>
@@ -34,6 +34,15 @@ export default PostDetail
 const styles = StyleSheet.create({
     body: { 
         marginHorizontal: 20,
-        marginVertical: 20 
+        marginVertical: 20
+    },
+    header: {
+        backgroundColor: '#f1c40f'
+    },
+    title: {
+        alignItems: 'center' 
+    },
+    content: {
+        alignItems: 'center' 
     }
 })

@@ -1,6 +1,6 @@
-import { TouchableOpacity, StyleSheet, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
-import { Card, Title } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 const UserList = (props) => {
 
@@ -10,16 +10,10 @@ const UserList = (props) => {
     const Item = ({ user }) => (
         <>
             <View style={styles.item}>
-                <TouchableOpacity onPress={() => navigation.navigate("UserDetail", { userId: user.id })}>
-                    <Card>
-                        <Card.Content>
-                            <Title style={styles.title}>{user.name}</Title>
-                        </Card.Content>
-                    </Card>
-                </TouchableOpacity>
+                <Button style={styles.title} mode="contained" onPress={() => navigation.navigate("UserDetail", { userId: user.id })}>
+                    {user.name}
+                </Button>
             </View>
-
-
         </>
     );
 
@@ -42,13 +36,11 @@ const UserList = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        marginVertical: 20
+        flex: 1
     },
     title: {
-        paddingBottom: 16,
-    }
-    ,
+        backgroundColor: '#208fd8'
+    },
     item: {
         marginVertical: 8,
         marginHorizontal: 16,

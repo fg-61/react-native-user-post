@@ -1,6 +1,6 @@
-import { TouchableOpacity, StyleSheet, View, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
-import { Card, Title } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 const PostList = (props) => {
 
@@ -11,13 +11,9 @@ const PostList = (props) => {
     const Item = ({ post }) => (
         <>
             <View style={styles.item}>
-                <TouchableOpacity onPress={() => navigation.navigate("PostDetail", { postId: post.id })}>
-                    <Card>
-                        <Card.Content style={{ alignItems: 'center' }}>
-                            <Title style={styles.title}>{post.title}</Title>
-                        </Card.Content>
-                    </Card>
-                </TouchableOpacity>
+                <Button style={styles.title} mode="contained" onPress={() => navigation.navigate("PostDetail", { postId: post.id })}>
+                    {post.title}
+                </Button>
             </View>
         </>
     );
@@ -43,17 +39,14 @@ const PostList = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        marginVertical: 20,
-        justifyContent: 'center'
+        flex: 1
     },
     title: {
-        paddingBottom: 16,
-    }
-    ,
+        backgroundColor: '#208fd8'
+    },
     item: {
         marginVertical: 8,
-        marginHorizontal: 16
+        marginHorizontal: 16,
     }
 });
 
