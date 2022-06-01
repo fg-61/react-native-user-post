@@ -1,6 +1,6 @@
-import { Text, TouchableOpacity, StyleSheet, View, FlatList } from 'react-native'
+import { TouchableOpacity, StyleSheet, View, FlatList } from 'react-native'
 import React from 'react'
-import { Card, Paragraph, Title } from 'react-native-paper';
+import { Card, Title } from 'react-native-paper';
 
 const PostList = (props) => {
 

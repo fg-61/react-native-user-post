@@ -1,45 +1,48 @@
 import React from 'react'
-import { Card, Paragraph, Title } from 'react-native-paper';
-import { View, ScrollView } from 'react-native'
+import { Appbar, Card, Paragraph, Title } from 'react-native-paper';
+import { View, ScrollView, StyleSheet } from 'react-native'
 
 const UserDetail = (props) => {
 
     const navigation = props.navigation;
     const user = props.user;
 
+    const onPressGoBack = () => {
+        navigation.goBack();
+    }
+
     return (
         <>
             <ScrollView>
-                <Card>
-                    <Card.Content style={{ alignItems: 'center' }}>
-                        <Title>{user.username}</Title>
-                    </Card.Content>
-                </Card>
+                <Appbar.Header style={{ backgroundColor: '#f1c40f' }}>
+                    <Appbar.BackAction onPress={() => onPressGoBack()} />
+                    <Appbar.Content title={user.username} subtitle={user.name} />
+                </Appbar.Header>
                 <View>
                     <Card>
                         <Card.Content>
-                            <Paragraph>Username</Paragraph>
+                            <Paragraph style={styles.title}>Username</Paragraph>
                             <Title>{user.username}</Title>
                         </Card.Content>
                     </Card>
 
                     <Card>
                         <Card.Content>
-                            <Paragraph>Name</Paragraph>
+                            <Paragraph style={styles.title}>Name</Paragraph>
                             <Title>{user.name}</Title>
                         </Card.Content>
                     </Card>
 
                     <Card>
                         <Card.Content>
-                            <Paragraph>Email</Paragraph>
+                            <Paragraph style={styles.title}>Email</Paragraph>
                             <Title>{user.email}</Title>
                         </Card.Content>
                     </Card>
 
                     <Card>
                         <Card.Content>
-                            <Paragraph style={{ margin: 10, marginBottom: 10 }}>Address</Paragraph>
+                            <Paragraph style={styles.title}>Address</Paragraph>
 
                             <Paragraph>City</Paragraph>
                             <Title>{user.address && user.address.city}</Title>
@@ -53,17 +56,17 @@ const UserDetail = (props) => {
                             <Paragraph>ZIP Code</Paragraph>
                             <Title>{user.address && user.address.zipcode}</Title>
 
-                            <Paragraph style={{ margin: 10, marginBottom: 10 }}>Geo</Paragraph>
+                            <Paragraph style={{ marginBottom: 5 }}>Location</Paragraph>
 
                             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                    <Paragraph>Latitude: </Paragraph>
+                                    <Paragraph>Latitude:    </Paragraph>
                                     <Title>{user.address && (user.address.geo && user.address.geo.lat)}</Title>
                                 </View>
 
                                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                    <Paragraph>Longitude: </Paragraph>
+                                    <Paragraph>Longitude:    </Paragraph>
                                     <Title>{user.address && (user.address.geo && user.address.geo.lng)}</Title>
                                 </View>
 
@@ -74,26 +77,28 @@ const UserDetail = (props) => {
 
                     <Card>
                         <Card.Content>
-                            <Paragraph>Phone</Paragraph>
+                            <Paragraph style={styles.title}>Phone</Paragraph>
                             <Title>{user.phone}</Title>
                         </Card.Content>
                     </Card>
+
                     <Card>
                         <Card.Content>
-                            <Paragraph>Website</Paragraph>
+                            <Paragraph style={styles.title}>Website</Paragraph>
                             <Title>{user.website}</Title>
                         </Card.Content>
                     </Card>
+                    
                     <Card>
                         <Card.Content>
-                            <Paragraph style={{ margin: 10, marginBottom: 10 }}>Company</Paragraph>
-                            
+                            <Paragraph style={styles.title}>Company</Paragraph>
+
                             <Paragraph>Company Name</Paragraph>
                             <Title>{user.company && user.company.name}</Title>
 
                             <Paragraph>Catch Phrase</Paragraph>
                             <Title>{user.company && user.company.catchPhrase}</Title>
-                            
+
                             <Paragraph>Broadcasting</Paragraph>
                             <Title>{user.company && user.company.bs}</Title>
                         </Card.Content>
@@ -106,3 +111,12 @@ const UserDetail = (props) => {
 }
 
 export default UserDetail
+
+const styles = StyleSheet.create({
+    title: {
+        color: '#3498db',
+        fontWeight: 'bold',
+        margin: 5,
+        marginBottom: 10
+    }
+})
