@@ -1,13 +1,27 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import baseManager from '../../api/baseManager';
+import UserDetail from '../../components/UserDetail';
 
-const UserDetailScreen = ( {route} ) => {
+const UserDetailScreen = ( {navigation, route} ) => {
 
-    const { userDetails } = route.params;
+  const [user, setUser] = useState([]);
+  const { userId } = route.params;
 
-    return (
-    <View>
-      <Text>{userDetails.name}</Text>
+  useEffect(() => {
+    getUserById(userId);
+  }, []);
+
+  const getUserById = (userId) => {
+    baseManager.getEntityById('/users', userId)
+      .then((data) => {
+        setUser(data);
+      })
+  };
+
+  return (
+    <View style={ { flex: 1 } }>
+      <UserDetail  user={user} navigation={navigation} ></UserDetail>
     </View>
   )
 }
