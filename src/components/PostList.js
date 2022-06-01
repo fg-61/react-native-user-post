@@ -19,12 +19,10 @@ const PostList = (props) => {
                     </Card>
                 </TouchableOpacity>
             </View>
-
-
         </>
     );
 
-    const renderUser = ({ item }) => (
+    const renderPost = ({ item }) => (
         <Item post={item} />
     );
 
@@ -33,7 +31,7 @@ const PostList = (props) => {
             <View style={styles.container}>
                 <FlatList
                     data={posts}
-                    renderItem={renderUser}
+                    renderItem={renderPost}
                     keyExtractor={item => item.id}
                     maxToRenderPerBatch={5}
                     initialNumToRender={5}
